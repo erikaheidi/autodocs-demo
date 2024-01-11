@@ -16,7 +16,7 @@ class DefaultController extends CommandController
 
         $this->info("Starting Build...");
         $autodocs->buildPages($this->getParam('pages') ?? "all");
-        $this->info("Build finished. Output saved to " . $autodocs->config['output']);
+        $this->info("Build finished. Output saved to ".$autodocs->config['output']);
 
     }
 }

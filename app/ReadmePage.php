@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 use Autodocs\DataFeed\JsonDataFeed;
@@ -31,7 +33,7 @@ class ReadmePage extends ReferencePage
     {
         $content = "";
         foreach ($this->dataFeed->json['projects'] as $project => $info) {
-            $content .= "- [$project]({$info['link']}): {$info['description']}\n"; // returns Markdown list
+            $content .= "- [{$project}]({$info['link']}): {$info['description']}\n"; // returns Markdown list
         }
 
         return $content;
