@@ -1,0 +1,14 @@
+{
+  "user": "Erika Heidi",
+  "bio": "Software and Documentation Engineer",
+  "projects": {
+    "minicli/minicli": {
+      "description": "CLI framework for PHP",
+      "link": "https://docs.minicli.dev"
+     },
+    "erikaheidi/autodocs": {
+      "description": "Tiny framework for automating documentation",
+      "link": "https://github.com/erikaheidi/autodocs/wiki"
+    }
+  }
+}
