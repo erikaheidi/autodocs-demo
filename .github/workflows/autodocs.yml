@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AUTODOCS_OUTPUT: "${{ github.workspace }}/output"
+  AUTODOCS_OUTPUT: "${{ github.workspace }}/content"
   AUTODOCS_CACHE: "${{ github.workspace }}/storage/cache"
   AUTODOCS_TEMPLATES: "${{ github.workspace }}/storage/templates"
 jobs:
@@ -40,7 +40,7 @@ jobs:
     - name: "Copy updates to main repo"
       run: |
         echo "Copying files..." && \
-        cp -R "${{ env.AUTODOCS_OUTPUT }}/*.md" "${{ github.workspace }}/storage/content" && \
+        cp -R "${{ env.AUTODOCS_OUTPUT }}" "${{ github.workspace }}/storage" && \
         echo "Finished copy"
 
     ############################################################################################
