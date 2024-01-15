@@ -50,7 +50,7 @@ jobs:
       uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04 # v4.2.3
       id: cpr
       with:
-        path: "${{ github.workspace }}/autodocs-demo"
+        path: "${{ github.workspace }}"
         commit-message: Update content
         title: "[AutoDocs] Updated Docs"
         body: "Updated Docs"
