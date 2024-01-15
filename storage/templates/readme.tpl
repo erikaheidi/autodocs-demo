@@ -2,6 +2,6 @@
 
 {{ about }}
 
-## My PHP Projects
+## My Projects
 
 {{ projects_list }}

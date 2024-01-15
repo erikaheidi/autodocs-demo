@@ -1,4 +1,4 @@
-name: PHP Composer
+name: Build Docs
 
 on:
   workflow_dispatch:
@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        path: autodocs-demo
 
     - name: Cache Composer packages
       id: composer-cache
@@ -36,7 +38,7 @@ jobs:
     - name: "Copy updates to main repo"
       run: |
         echo "Copying files..." && \
-        cp -R "${{ env.AUTODOCS_OUTPUT }}" "${{ github.workspace }}/autodocs-demo/storage/content" && \
+        cp -R "${{ env.AUTODOCS_OUTPUT }}/*.md" "${{ github.workspace }}/autodocs-demo/storage/content" && \
         echo "Finished copy"
 
     ############################################################################################
