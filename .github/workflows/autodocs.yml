@@ -5,8 +5,8 @@ on:
 
 env:
   AUTODOCS_OUTPUT: "${{ github.workspace }}"
-  AUTODOCS_CACHE: "${{ github.workspace }}/autodocs-demo/storage/cache"
-  AUTODOCS_TEMPLATES: "${{ github.workspace }}/autodocs-demo/storage/templates"
+  AUTODOCS_CACHE: "${{ github.workspace }}/storage/cache"
+  AUTODOCS_TEMPLATES: "${{ github.workspace }}/storage/templates"
 jobs:
   build:
 
@@ -14,8 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with:
-        path: autodocs-demo
 
     - name: Cache Composer packages
       id: composer-cache
@@ -38,7 +36,7 @@ jobs:
     - name: "Copy updates to main repo"
       run: |
         echo "Copying files..." && \
-        cp -R "${{ env.AUTODOCS_OUTPUT }}/*.md" "${{ github.workspace }}/autodocs-demo/storage/content" && \
+        cp -R "${{ env.AUTODOCS_OUTPUT }}/*.md" "${{ github.workspace }}/storage/content" && \
         echo "Finished copy"
 
     ############################################################################################
