@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AUTODOCS_OUTPUT: "${{ github.workspace }}"
+  AUTODOCS_OUTPUT: "${{ github.workspace }}/output"
   AUTODOCS_CACHE: "${{ github.workspace }}/storage/cache"
   AUTODOCS_TEMPLATES: "${{ github.workspace }}/storage/templates"
 jobs:
@@ -27,6 +27,10 @@ jobs:
     # Install Dependencies
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+
+    - name: Set up output dir
+      run: |
+        mkdir -m 777 -p "${{ env.AUTODOCS_OUTPUT }}"
 
     # Build Docs
     - name: Run Autodocs
