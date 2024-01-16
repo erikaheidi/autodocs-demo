@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  AUTODOCS_OUTPUT: "${{ github.workspace }}/content"
+  AUTODOCS_OUTPUT: "${{ github.workspace }}"
   AUTODOCS_CACHE: "${{ github.workspace }}/storage/cache"
   AUTODOCS_TEMPLATES: "${{ github.workspace }}/storage/templates"
 jobs:
@@ -28,33 +28,21 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
-    - name: Set up output dir
-      run: |
-        mkdir -m 777 -p "${{ env.AUTODOCS_OUTPUT }}"
-
     # Build Docs
     - name: Run Autodocs
       run: ./autodocs build
-
-    # Copy updated docs to main repo
-    - name: "Copy updates to main repo"
-      run: |
-        echo "Copying files..." && \
-        cp -R "${{ env.AUTODOCS_OUTPUT }}" "${{ github.workspace }}/storage" && \
-        echo "Finished copy"
 
     ############################################################################################
     # Send a Pull Request
     ############################################################################################
     - name: Create a PR
-      uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04 # v4.2.3
+      uses: peter-evans/create-pull-request@v5
       id: cpr
       with:
         path: "${{ github.workspace }}"
         commit-message: Update content
-        title: "[AutoDocs] Updated Docs"
-        body: "Updated Docs"
+        title: "[AutoDocs] Updated README"
+        body: "README auto-update"
         labels: |
           documentation
           automated
-        assignees: erikaheidi
